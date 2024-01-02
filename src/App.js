@@ -47,14 +47,33 @@ const tempWatchedData = [
   },
 ];
 function Navbar() {
-  const [query, setQuery] = useState("");
-
   return(
-    <nav className="nav-bar">
+  <nav className="nav-bar">
+    <Logo />
+    <Search />
+    <NumResults />
+  </nav>
+  )
+};
+function NumResults(){
+  return(
+    <p className="num-results">
+      Found <strong>{movies.length}</strong> results
+    </p>
+  )
+}
+function Logo(){
+  return(
     <div className="logo">
       <span role="img">🍿</span>
       <h1>usePopcorn</h1>
     </div>
+  )
+}
+function Search(){
+  const [query, setQuery] = useState("");
+
+  return(
     <input
       className="search"
       type="text"
@@ -62,10 +81,6 @@ function Navbar() {
       value={query}
       onChange={(e) => setQuery(e.target.value)}
     />
-    <p className="num-results">
-      Found <strong>{movies.length}</strong> results
-    </p>
-  </nav>
   )
 }
 const average = (arr) =>
@@ -80,7 +95,7 @@ function Main(){
   const avgImdbRating = average(watched.map((movie) => movie.imdbRating));
   const avgUserRating = average(watched.map((movie) => movie.userRating));
   const avgRuntime = average(watched.map((movie) => movie.runtime));
-return(
+  return(
   <main className="main">
   <div className="box">
     <button
