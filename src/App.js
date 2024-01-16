@@ -92,7 +92,7 @@ function WatchedBox() {
   return (
     <main className="main">
       <ListBox />
-      <Main movies={movies} />
+      <Main movies={Movie} />
 
       <div className="box">
         <button
@@ -140,7 +140,7 @@ function ListBox({ children }) {
       >
         {isOpen1 ? "–" : "+"}
       </button>
-      {isOpen1 && { children }}
+      {isOpen1 && children }
     </div>
   );
 }
