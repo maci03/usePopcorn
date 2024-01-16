@@ -16,11 +16,14 @@ const textStyle = {
 export default function StarRating(maxRating) {
   const [rating, setRating] = useState(0);
 
+  function handleRating(rating){
+    setRating(rating);
+  }
   return (
     <div style={containerStyle}>
       <div style={starContainerStyle}>
         {Array.form({ length: maxRating }, (_, i) => (
-          <Star kay={i} />
+          <Star kay={i} onRate={()=> handleRating(i + 1)} />
         ))}
       </div>
       <p style={textStyle}>{rating || ""}</p>
@@ -33,10 +36,10 @@ const starStyle = {
   display: "block",
   cursor: "pointer",
 };
-function Star() {
+function Star(onRate) {
   return (
     <>
-      <span role="button" style={starStyle}>
+      <span role="button" style={starStyle} onClick={onRate}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
