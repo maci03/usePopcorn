@@ -114,6 +114,7 @@ const average = (arr) =>
 
 export default function App() {
   const [movies, setMovies] = useState(tempMovieData);
+  const [watched, setWatched] = useState(tempWatchedData);
   return (
     <>
       <Navbar>
@@ -121,10 +122,16 @@ export default function App() {
         <NumResults movies={movies} />
       </Navbar>
       <Main>
-        <ListBox movies={movies}>
+        <Box movies={movies}>
           <MovieList movies={movies} />
-        </ListBox>
-        <WatchedBox />
+        </Box>
+        {/* <WatchedBox /> */}
+        <Box>
+            <>
+             <WatchedSummary watched={watched} />
+             <WatchedMovieList watched={watched} />
+            </>
+        </Box>
       </Main>
     </>
   );
