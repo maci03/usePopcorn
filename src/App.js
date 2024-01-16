@@ -114,11 +114,17 @@ function WatchedBox() {
 }
 
 export default function App() {
+  const [movies, setMovies] = useState(tempMovieData)
   return (
     <>
-      <Navbar />
-      {/* <WatchedSummary watched={watched} />
-      <WatchedMovieList watched={watched} /> */}
+        <Navbar>
+          <Search />
+          <NumResults movies={movies} />
+        </Navbar>
+        <Main>
+          <ListBox movies={movies} />
+          <WatchedBox />
+        </Main>
     </>
   );
 }
